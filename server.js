@@ -10,13 +10,6 @@ const connection = mysql.createConnection({
     database: "employeetracker_db"
 });
 
-// connecting to our database
-connection.connect(err => {
-    if (err) throw err;
-
-    // and initially displaying the user menu
-    start();//build a function on this 
-});
 
 //using this code!!
 // const start = async () => {
@@ -37,3 +30,8 @@ connection.connect(err => {
 //         default:
 //             connection.end();
 //     }
+
+// connecting to our database
+connection.connect((err)=> {
+    if (err) throw err;
+    console.log(`Now connected to MySQL at thread ${connection.threadID}!`)
