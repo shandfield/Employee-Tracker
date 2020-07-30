@@ -39,14 +39,14 @@ const userMenu = () => {
         }
     })
 };
-
+//!Ask brian: I have it set up to go from department, straight into role then once done goes into employee- is that the best way? 
 const createEmployee= () => {
     inquirer.prompt([//two stitch cases
         {
             type: "list",
-           name: "action",
-           message: "Which table would you like to work on?",
-           choices:["Department", "Role","Employee","Exit"] 
+            name: "action",
+            message: "Which table would you like to work on?",
+            choices:["Department", "Role","Employee","Exit"] 
         }
     ]).then(({ action})=>{
         switch (action){
@@ -152,14 +152,7 @@ const employeeInfo = () => {
             },
             {
                 name: "manager_id",
-                message: "What is the manager ID? If not manager, leave blank.",
-                validate: function (val){
-                    //used to verify that a number was entered in
-                    if (isNaN(val)){
-                        return `${val} is not a number.`
-                    } 
-                   return true;
-                }
+                message: "What is the manager ID? If not a manager, type in 0.",
             }
     ]).then(({first_name, last_name, role_id, manager_id}) => {
         connection.query(
@@ -179,30 +172,15 @@ const employeeInfo = () => {
     })
 };
       
-    
-    //     function updateEmployee() {
-    //         console.log("Updating your changes.\n");
-    //         //*!when doing this function: remember you have three data tables and need to specify where the update is going (department, role or employee) and what is being updated!
-    //         var query = connection.query(
-    //           "UPDATE employees SET ? WHERE ?",
-    //           [
-    //             {
-    //               quantity: 100
-    //             },
-    //             {
-    //               flavor: "Rocky Road"
-    //             }
-    //           ],
-    //           function(err, res) {
-    //             if (err) throw err;
-    //             console.log(res.affectedRows + " products updated!\n");
-                
-    //           }
-    //         );
+//!just to view all employees using 3 tables 
+const viewEmployee = () => {
+
+}
+
+    //*!when doing this function: remember you have three data tables and need to specify where the update is going (department, role or employee) and what information from those tables is being updated!
+        function updateEmployee() {
           
-    //         // logs the actual query being run
-    //         console.log(query.sql);
-    //       }
+          }
 
 
 // connecting to our database
