@@ -122,46 +122,63 @@ const roleInfo = () => {
             (err, result) => {
                 if (err) throw err;
                 console.log(`Successfully created a role table.`);
-                userMenu();
+                employeeInfo();
             }
         )
     })
 };
 
-
-    //!These questions will go in each of their own functions created from the switch above 
-    
-    
-    //     {//starts the employee table values of first_name,last_name, role_id, manager_id
-    //         name: "first_name",
-    //         message: "What is the employees first name?"
-    //     },
-    //     {
-    //         name: "last_name",
-    //         message: "What is the employees last name?"
-    //     },
-    //     {
-    //         name: "role_id",
-    //         message: "What is the role ID?",
-    //         validate: function (val){
-    //             //used to verify that a number was entered in
-    //             if (isNaN(val)){
-    //                 return `${val} is not a number.`
-    //             } 
-    //            return true;
-    //         }
-    //     },
-    //     {
-    //         name: "manager_id",
-    //         message: "What is the manager ID? If not manager, leave blank.",
-    //         validate: function (val){
-    //             //used to verify that a number was entered in
-    //             if (isNaN(val)){
-    //                 return `${val} is not a number.`
-    //             } 
-    //            return true;
-    //         }
-    //     }
+//starts the employee table values of first_name,last_name, role_id, manager_id
+const employeeInfo = () => {
+    inquirer.prompt ([
+            {
+                name: "first_name",
+                message: "What is the employees first name?"
+            },
+            {
+                name: "last_name",
+                message: "What is the employees last name?"
+            },
+            {
+                name: "role_id",
+                message: "What is the role ID?",
+                validate: function (val){
+                    //used to verify that a number was entered in
+                    if (isNaN(val)){
+                        return `${val} is not a number.`
+                    } 
+                   return true;
+                }
+            },
+            {
+                name: "manager_id",
+                message: "What is the manager ID? If not manager, leave blank.",
+                validate: function (val){
+                    //used to verify that a number was entered in
+                    if (isNaN(val)){
+                        return `${val} is not a number.`
+                    } 
+                   return true;
+                }
+            }
+    ]).then(({first_name, last_name, role_id, manager_id}) => {
+        connection.query(
+            "INSERT INTO employee SET ?", 
+            {
+                first_name,
+                last_name,
+                role_id,
+                manager_id
+            },
+            (err, result) => {
+                if (err) throw err;
+                console.log (`Successfully created employee table with information entered.`),
+                userMenu();
+            }
+        )
+    })
+};
+      
     
     //     function updateEmployee() {
     //         console.log("Updating your changes.\n");
