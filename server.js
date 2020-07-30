@@ -76,42 +76,62 @@ const departmentInfo = () => {
         (err, result) => {
             if (err) throw err;
             console.log (`Successfully add ${name} into the department table.`),
-            createEmployee();
+            roleInfo();
         }
       )
     })
 };
 
+//this starts the role table, with values of title,salary and department_id 
+const roleInfo = () => {
+    inquirer.prompt ([ 
+         {
+            name:"title",
+            message: "What is the title of the employee?"
+        },
+        {
+            name: "salary",
+            message: "What is the currently salary of the employee?",
+            validate: function (val){
+                //used to verify that a number was entered in
+                if (isNaN(val)){
+                    return `${val} is not a number.`
+                } 
+               return true;
+            }
+        },
+        {
+            name: "department_id",
+            message: "What is the department ID of this employee?",
+            validate: function (val){
+                //used to verify that a number was entered in
+                if (isNaN(val)){
+                    return `${val} is not a number.`
+                } 
+               return true;
+            }
+        }
+    ]).then(({title, salary, department_id}) => {
+        connection.query(
+            "INSERT INTO role SET ?",
+            {
+                title,
+                salary,
+                department_id
+            },
+            (err, result) => {
+                if (err) throw err;
+                console.log(`Successfully created a role table.`);
+                userMenu();
+            }
+        )
+    })
+};
 
 
     //!These questions will go in each of their own functions created from the switch above 
     
-    //  {//this starts the role table, with values of title,salary and department_id 
-    //         name:"title",
-    //         message: "What is the title of the employee?"
-    //     },
-    //     {
-    //         name: "salary",
-    //         message: "What is the currently salary of the employee?",
-    //         validate: function (val){
-    //             //used to verify that a number was entered in
-    //             if (isNaN(val)){
-    //                 return `${val} is not a number.`
-    //             } 
-    //            return true;
-    //         }
-    //     },
-    //     {
-    //         name: "department_id",
-    //         message: "What is the department ID of this employee?",
-    //         validate: function (val){
-    //             //used to verify that a number was entered in
-    //             if (isNaN(val)){
-    //                 return `${val} is not a number.`
-    //             } 
-    //            return true;
-    //         }
-    //     },
+    
     //     {//starts the employee table values of first_name,last_name, role_id, manager_id
     //         name: "first_name",
     //         message: "What is the employees first name?"
