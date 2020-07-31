@@ -1,5 +1,6 @@
 const mysql = require("mysql");
 const inquirer = require("inquirer");
+//const cTable = require('console.table'); //*will need to look more into this 
 
 // setting up our database connection (but not connecting yet!)
 const connection = mysql.createConnection({
@@ -269,6 +270,6 @@ const updateEmployee =() => {
 // connecting to our database
 connection.connect((err)=> {
     if (err) throw err;
-    console.log(`Now connected to MySQL!`);
+    console.log("Now connected to MySQL!")
     userMenu();
 });
