@@ -27,12 +27,11 @@ Demo Video Link: https://user-images.githubusercontent.com/63683598/93365474-121
 
 
 ## Motivation
-
-I wanted to help out a family friend that had a pretty basic website for her business and make more polished and user intuitive one. She is a small buisness owner, and sells products for people and animals to help heal with CBD. She also sells essential oils and other pet products. I really wanted to help her grow her business as well, espcially with COVID 19 happening. 
+To help any User that wants to create a way to track their employees by department, role and ID number. 
 
 ## Technologies
-MySQL, as it was used to set up the schema for the three different data tables. 
-HTML5, CSS, Bootstrap for now, more to come as the build continues. 
+MySQL was used to set up the schema for the three different data tables.
+<img src= "https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white" />
 <img src="https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white" />
 <img src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white" />
 
